@@ -123,11 +123,6 @@
         }
 
         /* ---- Inputs ---- */
-        .name-row {
-            display: flex;
-            gap: 0.4rem;
-        }
-
         .name-input, .andere-input {
             width: 100%;
             background: var(--ph-white);
@@ -158,22 +153,9 @@
         .andere-input.visible { display: block; }
 
         .name-hint {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
             margin-top: 0.2rem;
             font-size: 0.65rem;
             color: var(--ph-green);
-        }
-
-        .clear-name {
-            background: none;
-            border: none;
-            color: var(--ph-gray);
-            font-size: 0.65rem;
-            cursor: pointer;
-            text-decoration: underline;
-            font-family: inherit;
         }
 
         /* ---- Toggle Buttons ---- */
@@ -249,25 +231,6 @@
         .submit-btn:active { background: var(--ph-red-active); }
         .submit-btn:disabled { opacity: 0.45; cursor: not-allowed; }
 
-        .btn-log {
-            display: block;
-            width: 100%;
-            padding: 0.75rem;
-            background: var(--ph-white);
-            border: 1px solid var(--ph-gray-light);
-            border-radius: var(--radius);
-            color: var(--ph-gray-darker);
-            font-family: inherit;
-            font-size: 0.9rem;
-            font-weight: 600;
-            text-align: center;
-            text-decoration: none;
-            cursor: pointer;
-            transition: all 0.15s;
-        }
-
-        .btn-log:hover { background: var(--ph-gray-lighter); border-color: var(--ph-gray); }
-
         .status {
             text-align: center;
             font-size: 0.75rem;
@@ -278,29 +241,93 @@
 
         .status.error { color: var(--ph-red); }
 
-        /* ---- Confirmation Screen ---- */
-        .confirm-screen { display: none; }
-
-        .confirm-screen.visible {
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
+        /* ---- Problem melden ---- */
+        .btn-problem {
+            display: block;
+            width: 100%;
+            padding: 0.5rem;
+            background: none;
+            border: none;
+            color: var(--ph-gray);
+            font-family: inherit;
+            font-size: 0.72rem;
+            text-align: center;
+            text-decoration: underline;
+            cursor: pointer;
         }
 
-        .confirm-card {
-            background: var(--ph-white);
+        .btn-problem:hover { color: var(--ph-gray-darker); }
+
+        /* ---- Log iframe ---- */
+        .log-section-label {
+            font-size: 0.65rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.07em;
+            color: var(--ph-gray-dark);
+            padding: 0.5rem 0 0.2rem;
+        }
+
+        .sheet-frame {
+            width: 100%;
+            height: 45vh;
             border: 1px solid var(--ph-gray-light);
             border-radius: var(--radius-lg);
-            padding: 1rem 0.85rem;
+            background: var(--ph-white);
         }
 
-        .confirm-icon {
+        .btn-sheet-link {
+            display: block;
+            text-align: center;
+            font-size: 0.68rem;
+            color: var(--ph-blue);
+            text-decoration: none;
+            padding: 0.3rem 0;
+        }
+
+        .btn-sheet-link:hover { text-decoration: underline; }
+
+        /* ---- Footer ---- */
+        .footer {
+            text-align: center;
+            padding: 0.2rem 0 0.5rem;
+            font-size: 0.62rem;
+            color: var(--ph-gray);
+        }
+
+        /* ---- Popup Overlay ---- */
+        .popup-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 100;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+        }
+
+        .popup-overlay.visible {
+            display: flex;
+        }
+
+        .popup {
+            background: var(--ph-white);
+            border-radius: var(--radius-lg);
+            padding: 1.25rem 1rem;
+            max-width: 360px;
+            width: 100%;
+            max-height: 85vh;
+            overflow-y: auto;
+        }
+
+        .popup-icon {
             text-align: center;
             font-size: 2rem;
-            margin-bottom: 0.25rem;
+            margin-bottom: 0.2rem;
         }
 
-        .confirm-title {
+        .popup-title {
             text-align: center;
             font-size: 1rem;
             font-weight: 700;
@@ -308,52 +335,22 @@
             margin-bottom: 0.75rem;
         }
 
-        .confirm-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0.45rem 0;
+        .popup-rules {
+            font-size: 0.82rem;
+            line-height: 1.55;
+            color: var(--ph-black);
+            margin-bottom: 1rem;
+        }
+
+        .popup-rule {
+            padding: 0.4rem 0;
             border-bottom: 1px solid var(--ph-gray-light);
         }
 
-        .confirm-row:last-child { border-bottom: none; }
+        .popup-rule:last-child { border-bottom: none; }
 
-        .confirm-label {
-            font-size: 0.68rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.06em;
-            color: var(--ph-gray-dark);
-        }
-
-        .confirm-value {
-            font-size: 0.88rem;
-            font-weight: 600;
-            color: var(--ph-black);
-            text-align: right;
-        }
-
-        /* ---- Footer ---- */
-        .footer {
-            text-align: center;
-            padding: 0.35rem 0;
-            font-size: 0.62rem;
-            color: var(--ph-gray);
-        }
-
-        /* ---- Views ---- */
-        .form-screen { display: flex; flex-direction: column; gap: 0.5rem; }
-        .form-screen.hidden { display: none; }
-
-        .log-screen { display: none; flex-direction: column; gap: 0.5rem; }
-        .log-screen.visible { display: flex; }
-
-        .sheet-frame {
-            width: 100%;
-            height: 70vh;
-            border: 1px solid var(--ph-gray-light);
-            border-radius: var(--radius-lg);
-            background: var(--ph-white);
+        .popup .submit-btn {
+            margin-top: 0.25rem;
         }
     </style>
 </head>
@@ -366,109 +363,100 @@
         <h1>Lasercutter Log</h1>
     </div>
 
-    <!-- ===== FORM ===== -->
-    <div class="form-screen" id="formScreen">
-
-        <div class="card">
-            <div class="clock-bar">
-                <span class="clock-date" id="dateDisplay">—</span>
-                <span class="clock-time-group">
-                    <span class="clock-label">Startzeit</span>
-                    <span class="clock-time" id="timeDisplay">--:--:--</span>
-                </span>
-            </div>
+    <div class="card">
+        <div class="clock-bar">
+            <span class="clock-date" id="dateDisplay">—</span>
+            <span class="clock-time-group">
+                <span class="clock-label">Startzeit</span>
+                <span class="clock-time" id="timeDisplay">--:--:--</span>
+            </span>
         </div>
-
-        <div class="card">
-            <div class="section-label">Name und Vorname</div>
-            <input class="name-input" id="nameInput" type="text" placeholder="Name und Vorname" autocomplete="name">
-            <div class="name-hint" id="nameHint" style="display:none">
-                <span>✓ Gespeichert auf diesem Gerät</span>
-                <button onclick="clearSavedName()" class="clear-name">Ändern</button>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="section-label">Vorgang · Mehrfachauswahl möglich</div>
-            <div class="toggle-group">
-                <button class="toggle-btn op-schnitt" data-group="operation" data-value="Schnitt" onclick="toggleMulti(this)">Schnitt</button>
-                <button class="toggle-btn op-gravur" data-group="operation" data-value="Gravur" onclick="toggleMulti(this)">Gravur</button>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="section-label">Material</div>
-            <div class="material-grid">
-                <button class="toggle-btn mat" data-group="material" data-value="Pappelsperrholz" onclick="toggleMaterial(this)">Pappelsperrholz</button>
-                <button class="toggle-btn mat" data-group="material" data-value="Birkensperrholz" onclick="toggleMaterial(this)">Birkensperrholz</button>
-                <button class="toggle-btn mat" data-group="material" data-value="MDF" onclick="toggleMaterial(this)">MDF</button>
-                <button class="toggle-btn mat" data-group="material" data-value="PMMA (Acryl)" onclick="toggleMaterial(this)">PMMA (Acryl)</button>
-                <button class="toggle-btn mat" data-group="material" data-value="Karton" onclick="toggleMaterial(this)">Karton</button>
-                <button class="toggle-btn mat" data-group="material" data-value="Papier" onclick="toggleMaterial(this)">Papier</button>
-                <button class="toggle-btn mat" data-group="material" data-value="Leder" onclick="toggleMaterial(this)">Leder</button>
-                <button class="toggle-btn mat" data-group="material" data-value="Textil" onclick="toggleMaterial(this)">Textil</button>
-                <button class="toggle-btn mat" data-group="material" data-value="Andere" onclick="toggleMaterial(this)">Andere</button>
-            </div>
-            <input class="andere-input" id="textilInput" type="text" placeholder="Textiles Material eingeben …">
-            <input class="andere-input" id="andereInput" type="text" placeholder="Material eingeben …">
-        </div>
-
-        <div class="card">
-            <button class="submit-btn" id="submitBtn" onclick="submitEntry()">Eintragen</button>
-            <div class="status" id="status"></div>
-        </div>
-
-        <button class="btn-log" onclick="showLog()">Log ansehen</button>
-
     </div>
 
-    <!-- ===== CONFIRMATION ===== -->
-    <div class="confirm-screen" id="confirmScreen">
+    <div class="card">
+        <div class="section-label">Name und Vorname</div>
+        <input class="name-input" id="nameInput" type="text" placeholder="Name und Vorname" autocomplete="name">
+        <div class="name-hint" id="nameHint" style="display:none">✓ Gespeichert auf diesem Gerät</div>
+    </div>
 
-        <div class="confirm-card">
-            <div class="confirm-icon">✓</div>
-            <div class="confirm-title">Eintrag gespeichert</div>
-            <div id="confirmDetails"></div>
+    <div class="card">
+        <div class="section-label">Vorgang · Mehrfachauswahl möglich</div>
+        <div class="toggle-group">
+            <button class="toggle-btn op-schnitt" data-group="operation" data-value="Schnitt" onclick="toggleMulti(this)">Schnitt</button>
+            <button class="toggle-btn op-gravur" data-group="operation" data-value="Gravur" onclick="toggleMulti(this)">Gravur</button>
         </div>
-
-        <button class="submit-btn" onclick="newEntry()">Neuer Eintrag</button>
-        <button class="btn-log" onclick="showLog()">Log ansehen</button>
-
     </div>
 
-    <!-- ===== LOG VIEW ===== -->
-    <div class="log-screen" id="logScreen">
-
-        <iframe id="sheetFrame" class="sheet-frame" src="about:blank"></iframe>
-
-        <button class="submit-btn" onclick="showFormFromLog()">Zurück</button>
-
+    <div class="card">
+        <div class="section-label">Material</div>
+        <div class="material-grid">
+            <button class="toggle-btn mat" data-group="material" data-value="Pappelsperrholz" onclick="toggleMaterial(this)">Pappelsperrholz</button>
+            <button class="toggle-btn mat" data-group="material" data-value="Birkensperrholz" onclick="toggleMaterial(this)">Birkensperrholz</button>
+            <button class="toggle-btn mat" data-group="material" data-value="MDF" onclick="toggleMaterial(this)">MDF</button>
+            <button class="toggle-btn mat" data-group="material" data-value="PMMA (Acryl)" onclick="toggleMaterial(this)">PMMA (Acryl)</button>
+            <button class="toggle-btn mat" data-group="material" data-value="Karton" onclick="toggleMaterial(this)">Karton</button>
+            <button class="toggle-btn mat" data-group="material" data-value="Papier" onclick="toggleMaterial(this)">Papier</button>
+            <button class="toggle-btn mat" data-group="material" data-value="Leder" onclick="toggleMaterial(this)">Leder</button>
+            <button class="toggle-btn mat" data-group="material" data-value="Textil" onclick="toggleMaterial(this)">Textil</button>
+            <button class="toggle-btn mat" data-group="material" data-value="Andere" onclick="toggleMaterial(this)">Andere</button>
+        </div>
+        <input class="andere-input" id="textilInput" type="text" placeholder="Textiles Material eingeben …">
+        <input class="andere-input" id="andereInput" type="text" placeholder="Material eingeben …">
     </div>
+
+    <div class="card">
+        <button class="submit-btn" id="submitBtn" onclick="submitEntry()">Eintragen</button>
+        <div class="status" id="status"></div>
+    </div>
+
+    <button class="btn-problem" onclick="meldeProblem()">Problem melden</button>
+
+    <div class="log-section-label">Letzte Einträge</div>
+    <iframe id="sheetFrame" class="sheet-frame" src="about:blank"></iframe>
+
+    <a class="btn-sheet-link" href="https://docs.google.com/spreadsheets/d/1oVpkyINQEAGk8wE-YxMISCv9y4q0ZGyCuWiq38I2xU4/edit?gid=0#gid=0" target="_blank">Google Sheet öffnen ↗</a>
 
     <div class="footer">PHBern · Lasercutter Log</div>
 
 </div>
 
+<!-- ===== SUCCESS POPUP ===== -->
+<div class="popup-overlay" id="popupOverlay">
+    <div class="popup">
+        <div class="popup-icon">✓</div>
+        <div class="popup-title">Eintrag gespeichert</div>
+        <div class="popup-rules">
+            <div class="popup-rule">🪵 Verwende nur Materialien, die du zu 100 % kennst (z. B. Sperrholz, PMMA, Karton, chromfreies Leder).</div>
+            <div class="popup-rule">🌬️ Absauganlage einschalten, bevor du startest.</div>
+            <div class="popup-rule">👁️ Kontrollblick alle 30 Sekunden 🔥 (dabei Laserstelle nicht länger fixieren)!</div>
+            <div class="popup-rule">⏳ Warte kurz nach dem Lasern, bevor du den Deckel öffnest, damit Dämpfe abziehen.</div>
+            <div class="popup-rule">🧯 Stelle sicher, dass der Feuerlöscher vor Ort ist.</div>
+        </div>
+        <button class="submit-btn" onclick="closePopup()">Verstanden</button>
+    </div>
+</div>
+
 <script>
     // ============================================================
-    // KONFIGURATION: Hier die Google Apps Script URL eintragen
-    // ============================================================
     const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyBw_wKl95UN0d9VCmffRc7N6_UfTyY8HrsAtU7AEMyRRKbyPIyqcU77sf7AJzLTJZB/exec';
+    const SHEET_LIVE_URL = 'https://docs.google.com/spreadsheets/d/1oVpkyINQEAGk8wE-YxMISCv9y4q0ZGyCuWiq38I2xU4/gviz/tq?tqx=out:html';
     // ============================================================
 
+    // Restore saved name
     const savedName = localStorage.getItem('lasercutter_name');
     if (savedName) {
         document.getElementById('nameInput').value = savedName;
-        document.getElementById('nameHint').style.display = 'flex';
+        document.getElementById('nameHint').style.display = 'block';
     }
 
-    function clearSavedName() {
-        localStorage.removeItem('lasercutter_name');
-        document.getElementById('nameInput').value = '';
-        document.getElementById('nameInput').focus();
-        document.getElementById('nameHint').style.display = 'none';
+    // Load log on start
+    loadLog();
+
+    function loadLog() {
+        document.getElementById('sheetFrame').src = SHEET_LIVE_URL + '&t=' + Date.now();
     }
 
+    // Clock
     function updateClock() {
         const now = new Date();
         document.getElementById('timeDisplay').textContent =
@@ -479,36 +467,24 @@
     updateClock();
     setInterval(updateClock, 1000);
 
-    // Operation: multi-select toggle
-    function toggleMulti(btn) {
-        btn.classList.toggle('selected');
-    }
+    // Operation: multi-select
+    function toggleMulti(btn) { btn.classList.toggle('selected'); }
 
     function getSelectedMulti(group) {
-        return [...document.querySelectorAll(`[data-group="${group}"].selected`)]
-            .map(b => b.dataset.value);
+        return [...document.querySelectorAll(`[data-group="${group}"].selected`)].map(b => b.dataset.value);
     }
 
-    // Material: single select, Textil + Andere show text fields
+    // Material: single select
     function toggleMaterial(btn) {
         const val = btn.dataset.value;
         const textilInput = document.getElementById('textilInput');
         const andereInput = document.getElementById('andereInput');
-
         document.querySelectorAll('[data-group="material"]').forEach(b => b.classList.remove('selected'));
         btn.classList.add('selected');
-
-        // Hide both first
         textilInput.classList.remove('visible');
         andereInput.classList.remove('visible');
-
-        if (val === 'Textil') {
-            textilInput.classList.add('visible');
-            textilInput.focus();
-        } else if (val === 'Andere') {
-            andereInput.classList.add('visible');
-            andereInput.focus();
-        }
+        if (val === 'Textil') { textilInput.classList.add('visible'); textilInput.focus(); }
+        else if (val === 'Andere') { andereInput.classList.add('visible'); andereInput.focus(); }
     }
 
     function getSelectedMaterial() {
@@ -518,9 +494,7 @@
             const v = document.getElementById('textilInput').value.trim();
             return v ? 'Textil: ' + v : '';
         }
-        if (sel.dataset.value === 'Andere') {
-            return document.getElementById('andereInput').value.trim() || '';
-        }
+        if (sel.dataset.value === 'Andere') return document.getElementById('andereInput').value.trim() || '';
         return sel.dataset.value;
     }
 
@@ -530,42 +504,11 @@
         el.className = 'status ' + type;
     }
 
-    function showForm() {
-        document.getElementById('formScreen').classList.remove('hidden');
-        document.getElementById('confirmScreen').classList.remove('visible');
-        document.getElementById('logScreen').classList.remove('visible');
-    }
-
-    function showLog() {
-        document.getElementById('formScreen').classList.add('hidden');
-        document.getElementById('confirmScreen').classList.remove('visible');
-        document.getElementById('logScreen').classList.add('visible');
-        // Reload with cache busting
-        var frame = document.getElementById('sheetFrame');
-        var baseUrl = 'https://docs.google.com/spreadsheets/d/1oVpkyINQEAGk8wE-YxMISCv9y4q0ZGyCuWiq38I2xU4/gviz/tq?tqx=out:html';
-        frame.src = baseUrl + '&t=' + Date.now();
-    }
-
-    function showFormFromLog() {
-        document.getElementById('logScreen').classList.remove('visible');
-        document.getElementById('formScreen').classList.remove('hidden');
-    }
-
-    function showConfirm(payload) {
-        document.getElementById('formScreen').classList.add('hidden');
-        document.getElementById('logScreen').classList.remove('visible');
-        document.getElementById('confirmDetails').innerHTML = `
-            <div class="confirm-row"><span class="confirm-label">Name</span><span class="confirm-value">${payload.name}</span></div>
-            <div class="confirm-row"><span class="confirm-label">Datum</span><span class="confirm-value">${payload.datum}</span></div>
-            <div class="confirm-row"><span class="confirm-label">Startzeit</span><span class="confirm-value">${payload.zeit}</span></div>
-            <div class="confirm-row"><span class="confirm-label">Vorgang</span><span class="confirm-value">${payload.vorgang}</span></div>
-            <div class="confirm-row"><span class="confirm-label">Material</span><span class="confirm-value">${payload.material}</span></div>
-        `;
-        document.getElementById('confirmScreen').classList.add('visible');
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    function newEntry() {
+    // Popup
+    function showPopup() { document.getElementById('popupOverlay').classList.add('visible'); }
+    function closePopup() {
+        document.getElementById('popupOverlay').classList.remove('visible');
+        // Reset form
         document.querySelectorAll('.toggle-btn.selected').forEach(b => b.classList.remove('selected'));
         document.getElementById('textilInput').classList.remove('visible');
         document.getElementById('textilInput').value = '';
@@ -574,9 +517,19 @@
         setStatus('');
         document.getElementById('submitBtn').disabled = false;
         document.getElementById('submitBtn').textContent = 'Eintragen';
-        showForm();
+        // Reload log
+        loadLog();
     }
 
+    // Problem melden
+    function meldeProblem() {
+        const to = 'lukas.jordi@phbern.ch,alain.wittwer@phbern.ch,michael.steiner@phbern.ch';
+        const subject = encodeURIComponent('Problem Lasercutter');
+        const body = encodeURIComponent('Hallo,\n\nich möchte ein Problem mit dem Lasercutter melden:\n\n');
+        window.location.href = `mailto:${to}?subject=${subject}&body=${body}`;
+    }
+
+    // Submit
     async function submitEntry() {
         const name = document.getElementById('nameInput').value.trim();
         const operations = getSelectedMulti('operation');
@@ -600,6 +553,7 @@
         }
 
         localStorage.setItem('lasercutter_name', name);
+        document.getElementById('nameHint').style.display = 'block';
 
         const now = new Date();
         const datum = now.toLocaleDateString('de-CH');
@@ -616,14 +570,14 @@
             if (GOOGLE_SCRIPT_URL === 'HIER_DEINE_GOOGLE_APPS_SCRIPT_URL') {
                 console.log('Demo-Eintrag:', payload);
                 await new Promise(r => setTimeout(r, 600));
-                showConfirm(payload);
+                showPopup();
                 return;
             }
 
             const params = new URLSearchParams(payload);
             const url = GOOGLE_SCRIPT_URL + '?' + params.toString();
             await fetch(url, { mode: 'no-cors' });
-            showConfirm(payload);
+            showPopup();
         } catch (err) {
             console.error(err);
             setStatus('Fehler beim Senden. Nochmal versuchen.', 'error');
