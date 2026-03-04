@@ -554,7 +554,7 @@
         const payload = { name, datum, zeit, vorgang: operations.join(' + '), material };
 
         try {
-            if (GOOGLE_SCRIPT_URL === 'HIER_DEINE_GOOGLE_APPS_SCRIPT_URL') {
+            if (GOOGLE_SCRIPT_URL === 'https://lukasjordiphbern.github.io/LaserLog/') {
                 console.log('Demo-Eintrag:', payload);
                 await new Promise(r => setTimeout(r, 600));
                 showConfirm(payload);
