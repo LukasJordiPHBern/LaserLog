@@ -249,6 +249,24 @@
         .submit-btn:active { background: var(--ph-red-active); }
         .submit-btn:disabled { opacity: 0.45; cursor: not-allowed; }
 
+        .btn-log {
+            display: block;
+            width: 100%;
+            padding: 0.75rem;
+            background: var(--ph-white);
+            border: 1px solid var(--ph-gray-light);
+            border-radius: var(--radius);
+            color: var(--ph-gray-darker);
+            font-family: inherit;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-align: center;
+            text-decoration: none;
+            transition: all 0.15s;
+        }
+
+        .btn-log:hover { background: var(--ph-gray-lighter); border-color: var(--ph-gray); }
+
         .status {
             text-align: center;
             font-size: 0.75rem;
@@ -388,6 +406,8 @@
             <div class="status" id="status"></div>
         </div>
 
+        <a href="https://docs.google.com/spreadsheets/d/1oVpkyINQEAGk8wE-YxMISCv9y4q0ZGyCuWiq38I2xU4/edit?gid=0#gid=0" target="_blank" class="btn-log">Log ansehen</a>
+
     </div>
 
     <!-- ===== CONFIRMATION ===== -->
@@ -400,6 +420,7 @@
         </div>
 
         <button class="submit-btn" onclick="newEntry()">Neuer Eintrag</button>
+        <a href="https://docs.google.com/spreadsheets/d/1oVpkyINQEAGk8wE-YxMISCv9y4q0ZGyCuWiq38I2xU4/edit?gid=0#gid=0" target="_blank" class="btn-log">Log ansehen</a>
 
     </div>
 
