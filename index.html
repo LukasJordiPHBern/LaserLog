@@ -262,6 +262,7 @@
             font-weight: 600;
             text-align: center;
             text-decoration: none;
+            cursor: pointer;
             transition: all 0.15s;
         }
 
@@ -343,6 +344,17 @@
         /* ---- Views ---- */
         .form-screen { display: flex; flex-direction: column; gap: 0.5rem; }
         .form-screen.hidden { display: none; }
+
+        .log-screen { display: none; flex-direction: column; gap: 0.5rem; }
+        .log-screen.visible { display: flex; }
+
+        .sheet-frame {
+            width: 100%;
+            height: 70vh;
+            border: 1px solid var(--ph-gray-light);
+            border-radius: var(--radius-lg);
+            background: var(--ph-white);
+        }
     </style>
 </head>
 <body>
@@ -406,7 +418,7 @@
             <div class="status" id="status"></div>
         </div>
 
-        <a href="https://docs.google.com/spreadsheets/d/1oVpkyINQEAGk8wE-YxMISCv9y4q0ZGyCuWiq38I2xU4/edit?gid=0#gid=0" target="_blank" class="btn-log">Log ansehen</a>
+        <button class="btn-log" onclick="showLog()">Log ansehen</button>
 
     </div>
 
@@ -420,7 +432,18 @@
         </div>
 
         <button class="submit-btn" onclick="newEntry()">Neuer Eintrag</button>
-        <a href="https://docs.google.com/spreadsheets/d/1oVpkyINQEAGk8wE-YxMISCv9y4q0ZGyCuWiq38I2xU4/edit?gid=0#gid=0" target="_blank" class="btn-log">Log ansehen</a>
+        <button class="btn-log" onclick="showLog()">Log ansehen</button>
+
+    </div>
+
+    <!-- ===== LOG VIEW ===== -->
+    <div class="log-screen" id="logScreen">
+
+        <iframe id="sheetFrame" class="sheet-frame"
+            src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTayH2wWpy5iY4nRIbAnuMCB_TUApKi7j8hP1rE9MYqFhQOX7fL51smgn4Ln9So69n8TueFEOZOYlDB/pubhtml?widget=false&headers=false&chrome=false">
+        </iframe>
+
+        <button class="submit-btn" onclick="showFormFromLog()">Zurück</button>
 
     </div>
 
@@ -512,10 +535,26 @@
     function showForm() {
         document.getElementById('formScreen').classList.remove('hidden');
         document.getElementById('confirmScreen').classList.remove('visible');
+        document.getElementById('logScreen').classList.remove('visible');
+    }
+
+    function showLog() {
+        document.getElementById('formScreen').classList.add('hidden');
+        document.getElementById('confirmScreen').classList.remove('visible');
+        document.getElementById('logScreen').classList.add('visible');
+        // Reload iframe to get latest data
+        var frame = document.getElementById('sheetFrame');
+        frame.src = frame.src;
+    }
+
+    function showFormFromLog() {
+        document.getElementById('logScreen').classList.remove('visible');
+        document.getElementById('formScreen').classList.remove('hidden');
     }
 
     function showConfirm(payload) {
         document.getElementById('formScreen').classList.add('hidden');
+        document.getElementById('logScreen').classList.remove('visible');
         document.getElementById('confirmDetails').innerHTML = `
             <div class="confirm-row"><span class="confirm-label">Name</span><span class="confirm-value">${payload.name}</span></div>
             <div class="confirm-row"><span class="confirm-label">Datum</span><span class="confirm-value">${payload.datum}</span></div>
