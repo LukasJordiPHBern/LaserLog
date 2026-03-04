@@ -439,9 +439,7 @@
     <!-- ===== LOG VIEW ===== -->
     <div class="log-screen" id="logScreen">
 
-        <iframe id="sheetFrame" class="sheet-frame"
-            src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTayH2wWpy5iY4nRIbAnuMCB_TUApKi7j8hP1rE9MYqFhQOX7fL51smgn4Ln9So69n8TueFEOZOYlDB/pubhtml?widget=false&headers=false&chrome=false">
-        </iframe>
+        <iframe id="sheetFrame" class="sheet-frame" src="about:blank"></iframe>
 
         <button class="submit-btn" onclick="showFormFromLog()">Zurück</button>
 
@@ -542,9 +540,10 @@
         document.getElementById('formScreen').classList.add('hidden');
         document.getElementById('confirmScreen').classList.remove('visible');
         document.getElementById('logScreen').classList.add('visible');
-        // Reload iframe to get latest data
+        // Reload with cache busting
         var frame = document.getElementById('sheetFrame');
-        frame.src = frame.src;
+        var baseUrl = 'https://docs.google.com/spreadsheets/d/1oVpkyINQEAGk8wE-YxMISCv9y4q0ZGyCuWiq38I2xU4/gviz/tq?tqx=out:html';
+        frame.src = baseUrl + '&t=' + Date.now();
     }
 
     function showFormFromLog() {
